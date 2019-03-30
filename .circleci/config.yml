@@ -82,7 +82,7 @@ jobs:
 
       - run:
           name: Check Dependency Vulnerabilities
-          command: yarn audit
+          command: yarn audit --production
 
   build:
     <<: *defaults
@@ -127,12 +127,12 @@ workflows:
       - lint:
           requires:
             - checkout
-      - dependencycheck:
-          requires:
-            - checkout
+      # - dependencycheck:
+      #     requires:
+      #       - checkout
       - build:
           requires:
-            - dependencycheck
+            # - dependencycheck
             - test
             - lint
 
@@ -161,14 +161,14 @@ workflows:
               ignore: /.*/
           requires:
             - checkout
-      - dependencycheck:
-          filters:
-            tags:
-              only: /v[0-9]+(\.[0-9]+)*/
-            branches:
-              ignore: /.*/
-          requires:
-            - checkout
+      # - dependencycheck:
+      #     filters:
+      #       tags:
+      #         only: /v[0-9]+(\.[0-9]+)*/
+      #       branches:
+      #         ignore: /.*/
+      #     requires:
+      #       - checkout
       - build:
           filters:
             tags:
@@ -176,7 +176,7 @@ workflows:
             branches:
               ignore: /.*/
           requires:
-            - dependencycheck
+            # - dependencycheck
             - test
             - lint
       - deploy:
