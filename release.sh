@@ -4,7 +4,8 @@
 yarn install
 
 ## check for uncommitted changes
-CHANGES=$(git diff --no-ext-diff --quiet --exit-code)
+(git diff --no-ext-diff --quiet --exit-code)
+CHANGES=$?
 if [[ $CHANGES != "0" ]]; then
   echo "You have uncommitted changes. Exiting."
   exit $CHANGES
