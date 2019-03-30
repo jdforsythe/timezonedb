@@ -1,0 +1,43 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Run App",
+      "type": "node",
+      "request": "launch",
+      "runtimeVersion": "10.14.2",
+      "args": [
+        "-r",
+        "ts-node/register",
+        "src/go.ts",
+      ],
+      "cwd": "${workspaceRoot}",
+      "runtimeExecutable": "node",
+      "protocol": "inspector",
+      "sourceMaps": true,
+      "outputCapture": "std",
+      "outFiles": [
+        ".ts-node/**"
+      ]
+    },
+    {
+      "name": "Run Tests",
+      "type": "node",
+      "request": "launch",
+      "runtimeVersion": "10.14.2",
+      "args": [
+        "-r",
+        "ts-node/register",
+        "src/**/*.spec.ts",
+      ],
+      "cwd": "${workspaceRoot}",
+      "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/mocha",
+      "protocol": "inspector",
+      "sourceMaps": true,
+      "outputCapture": "std",
+      "outFiles": [
+        ".ts-node/**"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "name": "timezonedb",
+  "version": "0.0.1",
+  "description": "Call the TimeZoneDB API",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jdforsythe/timezonedb.git"
+  },
+  "keywords": [
+    "timezone",
+    "api",
+    "typescript"
+  ],
+  "author": "Jeremy Forsythe <jdforsythe@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jdforsythe/timezonedb/issues"
+  },
+  "homepage": "https://github.com/jdforsythe/timezonedb#readme",
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "scripts": {
+    "build": "yarn install && yarn run lint && yarn run test && yarn run clean-compiled && yarn run compile",
+    "build-with-audit": "yarn install && yarn audit && yarn run lint && yarn run test && yarn run clean-compiled && yarn run compile",
+    "lint": "tslint -c tslint.json -p tsconfig.json",
+    "test": "nyc mocha --opts mocha.opts",
+    "clean-compiled": "npx shx rm -rf lib",
+    "compile": "tsc",
+    "test-watch": "mocha-typescript-watch -p tsconfig.json -o mocha.opts",
+    "release": "./release.sh"
+  },
+  "nyc": {
+    "include": [
+      "src/**/*.ts"
+    ],
+    "exclude": [
+      "**/*.spec.ts"
+    ],
+    "extension": [
+      ".ts"
+    ],
+    "require": [
+      "ts-node/register"
+    ],
+    "reporter": [
+      "json-summary",
+      "text-summary",
+      "html"
+    ],
+    "sourceMap": true,
+    "instrument": true
+  },
+  "dependencies": {
+    "got": "^9.6.0"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.1.7",
+    "@types/got": "^9.4.1",
+    "@types/mocha": "^5.2.6",
+    "@types/node": "^10.14.4",
+    "@types/sinon": "^7.0.10",
+    "chai": "^4.2.0",
+    "make-coverage-badge": "^1.1.1",
+    "mocha": "^6.0.2",
+    "mocha-typescript": "^1.1.17",
+    "nyc": "^13.3.0",
+    "sinon": "^7.3.1",
+    "source-map-support": "^0.5.9",
+    "ts-node": "^7.0.1",
+    "tslint": "5.14.0",
+    "tslint-config-airbnb": "5.11.1",
+    "typescript": "~3.1.6"
+  }
+}
