@@ -2,6 +2,8 @@
 
 A simple promise-based (async/await) client library for interacting with [TimeZoneDB API](https://timezonedb.com) with Typescript type definitions.
 
+![Code Coverage](./coverage/badge.svg)
+
 ## Install
 
 ```sh
@@ -47,7 +49,7 @@ The premium methods (`getTimeZoneByCity()` and `getTimeZoneByIP()`) are untested
 
 ### Class vs request methods
 
-You can either use `new Tzdb(TZDBConfig)` and use the instance methods or you can import the request functions (e.g. `listTimeZones(TZDBConfig, ListTimeZonesRequest)` directly). The class is just a wrapper for calling the request functions with the provided config.
+You can either use `new Tzdb(TZDBConfig)` and use the instance methods or you can import the request functions (e.g. `listTimeZones(TZDBConfig, ListTimeZonesRequest)`) directly. The class is just a wrapper for calling the request functions with the provided config.
 
 For example:
 
@@ -74,35 +76,36 @@ getTimeZoneByZone(config, { zone: 'America/New_York' })
  ```
 
 ### Tzdb Class Methods
-    ```ts
-    class Tzdb {
-      listTimeZones(ListTimeZonesRequest) // returns `Promise<TimeZone[]>`
-      getTimeZoneByZone(GetTimeZoneRequestByZone) // returns `Promise<TimeZoneDetail>`
-      getTimeZoneByPosition(GetTimeZoneRequestByPosition) // returns `Promise<TimeZoneDetail>`
-      getTimeZoneByCity(GetTimeZoneRequestByCity) // returns `Promise<TimeZoneDetail[]>`
-      getTimeZoneByIP(GetTimeZoneRequestByIP) // returns `Promise<TimeZoneDetail>`
-      convertTimeZone(ConvertTimeZoneRequest) // returns `Promise<TimeZoneConversion>`
-    }
-    ```
+
+```ts
+class Tzdb {
+  listTimeZones(ListTimeZonesRequest) // returns `Promise<TimeZone[]>`
+  getTimeZoneByZone(GetTimeZoneRequestByZone) // returns `Promise<TimeZoneDetail>`
+  getTimeZoneByPosition(GetTimeZoneRequestByPosition) // returns `Promise<TimeZoneDetail>`
+  getTimeZoneByCity(GetTimeZoneRequestByCity) // returns `Promise<TimeZoneDetail[]>`
+  getTimeZoneByIP(GetTimeZoneRequestByIP) // returns `Promise<TimeZoneDetail>`
+  convertTimeZone(ConvertTimeZoneRequest) // returns `Promise<TimeZoneConversion>`
+}
+```
 
 ### Request functions
 
-    ```ts
-    import * as tzdb from 'timezonedb';
+```ts
+import * as tzdb from 'timezonedb';
 
-    tzdb.listTimeZones(TZDBConfig, ListTimeZonesRequest) // returns `Promise<TimeZone[]>`
-    tzdb.getTimeZoneByZone(TZDBConfig, GetTimeZoneRequestByZone) // returns `Promise<TimeZoneDetail>`
-    tzdb.getTimeZoneByPosition(TZDBConfig, GetTimeZoneRequestByPosition) // returns `Promise<TimeZoneDetail>`
-    tzdb.getTimeZoneByCity(TZDBConfig, GetTimeZoneRequestByCity) // returns `Promise<TimeZoneDetail[]>`
-    tzdb.getTimeZoneByIP(TZDBConfig, GetTimeZoneRequestByIP) // returns `Promise<TimeZoneDetail>`
-    tzdb.convertTimeZone(TZDBConfig, ConvertTimeZoneRequest) // returns `Promise<TimeZoneConversion>`
-    ```
+tzdb.listTimeZones(TZDBConfig, ListTimeZonesRequest) // returns `Promise<TimeZone[]>`
+tzdb.getTimeZoneByZone(TZDBConfig, GetTimeZoneRequestByZone) // returns `Promise<TimeZoneDetail>`
+tzdb.getTimeZoneByPosition(TZDBConfig, GetTimeZoneRequestByPosition) // returns `Promise<TimeZoneDetail>`
+tzdb.getTimeZoneByCity(TZDBConfig, GetTimeZoneRequestByCity) // returns `Promise<TimeZoneDetail[]>`
+tzdb.getTimeZoneByIP(TZDBConfig, GetTimeZoneRequestByIP) // returns `Promise<TimeZoneDetail>`
+tzdb.convertTimeZone(TZDBConfig, ConvertTimeZoneRequest) // returns `Promise<TimeZoneConversion>`
+```
 
 ### Parameters
 
   - `TZDBConfig`
 
-      These values can all be set by corresponding environment variables or passed as a config object to the class constructor or the request functions.
+      These values can all be set by their corresponding environment variables or passed as a config object to the class constructor or the request functions.
 
       ```ts
       {
