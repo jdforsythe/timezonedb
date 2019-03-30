@@ -12,6 +12,7 @@ if [[ $CHANGES != "0" ]]; then
 fi
 
 ## make sure repo is synced with remote
+git checkout master
 git fetch --tags
 git pull --quiet
 git push || git push -u origin HEAD
